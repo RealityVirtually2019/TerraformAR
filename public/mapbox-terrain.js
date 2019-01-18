@@ -19,6 +19,8 @@ AFRAME.registerComponent('mapbox-terrain', {
 		},
 	},
 	init: function () {
+    console.log("mapbox terrain init");
+    
 		// https://www.mapbox.com/studio/account/tokens/
 		var access_token = 'pk.eyJ1IjoiaGVnZW1vbiIsImEiOiJjamVxa3NxYWcwN3ZvMndwNGNhcHM3emtoIn0.zYwZCho1w0eCEMiWiTHSaw';
 

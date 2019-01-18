@@ -1,39 +1,50 @@
 //////////////////////////////////////////////////////////////////////////////
 //		arjs-hit-testing
 //////////////////////////////////////////////////////////////////////////////
-console.log('hello mapbox terrain');
+var CONFIG = {};
+CONFIG.DEBUG = true;
+
+if (typeof AFRAME === 'undefined') {
+    throw new Error('Component attempted to register before AFRAME was available.');
+  }
+  else {
+    if (CONFIG.DEBUG) {console.log("Registering mapbox-terrain...");}
+}
 
 AFRAME.registerComponent('mapbox-terrain', {
 	schema: {
-		latitude : {
+		latitude: {
 			type: 'number',
 			default: 0,
 		},
-		longitude : {
+		longitude: {
 			type: 'number',
 			default: 0,
 		},
-		'zoom-level' : {	// http://wiki.openstreetmap.org/wiki/Zoom_levels
+		'zoom-level': {	// http://wiki.openstreetmap.org/wiki/Zoom_levels
 			type: 'number',
 			default: 0,
+		},
+		type:  { // https://www.mapbox.com/api-documentation/#maps
+			type: 'string',
+			default: 'satellite',
 		},
 	},
 	init: function () {
-    console.log("mapbox terrain init");
-    
 		// https://www.mapbox.com/studio/account/tokens/
-		var access_token = 'pk.eyJ1IjoiaGVnZW1vbiIsImEiOiJjamVxa3NxYWcwN3ZvMndwNGNhcHM3emtoIn0.zYwZCho1w0eCEMiWiTHSaw';
+		var access_token = 'pk.eyJ1IjoiamV0aWVubmUiLCJhIjoiY2o1eWFxaHFqMDBlcTJxbnBlNTVlOGkwZiJ9.-gTP-Ef27RRamJP7iF7W9g'
 
 		var mapLatitude = this.data.latitude;
 		var mapLongitude = this.data.longitude;
 		var mapZoomLevel = this.data['zoom-level'];
+		var type = this.data.type;
 		var tileX = long2tile(mapLongitude, mapZoomLevel);
 		var tileY = lat2tile(mapLatitude, mapZoomLevel);
 
 	
 		var texture = buildTerrainTexture();
 
-		var geometry	= new THREE.PlaneGeometry(1,1);
+		// var geometry	= new THREE.PlaneGeometry(1,1);
 		var geometry	= buildElevationPlaneGeometry();
 		var material	= new THREE.MeshPhongMaterial({
 			map: texture,
@@ -41,13 +52,12 @@ AFRAME.registerComponent('mapbox-terrain', {
 		}); 
 
 		var mesh	= new THREE.Mesh( geometry, material );
-		mesh.rotation.x = -Math.PI/2
-		mesh.receiveShadow = true
-		mesh.castShadow = true
+		mesh.rotation.x = -Math.PI/2;
+		mesh.receiveShadow = true;
+		mesh.castShadow = true;
  
-		mesh.scale.multiplyScalar(4)
-		this.el.object3D.add(mesh)
-		return
+		mesh.scale.multiplyScalar(4);
+		this.el.object3D.add(mesh);
 		
 		// http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#ECMAScript_.28JavaScript.2FActionScript.2C_etc..29
 		function long2tile(lon,zoom) { return (Math.floor((lon+180)/360*Math.pow(2,zoom))); }
@@ -88,7 +98,7 @@ AFRAME.registerComponent('mapbox-terrain', {
 			return geometry
 		}
 		function buildTerrainTexture(){
-			var restURL = `https://api.mapbox.com/v4/mapbox.streets-satellite/${mapZoomLevel}/${tileX}/${tileY}@2x.png?access_token=${access_token}`
+			var restURL = `https://api.mapbox.com/v4/mapbox.${type}/${mapZoomLevel}/${tileX}/${tileY}@2x.png?access_token=${access_token}`
 			// var restURL = `https://api.mapbox.com/v4/mapbox.satellite/${mapZoomLevel}/${tileX}/${tileY}@2x.png?access_token=${access_token}`
 
 			var texture = new THREE.Texture()

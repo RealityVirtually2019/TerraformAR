@@ -41,20 +41,8 @@ AFRAME.registerComponent('mapbox-terrain', {
 		var tileX = long2tile(mapLongitude, mapZoomLevel);
 		var tileY = lat2tile(mapLatitude, mapZoomLevel);
     
-    console.log('tileX');
-    console.log(tileX);
-    console.log('tileY');
-    console.log(tileY);
-    
-    
-    
     var mesh = drawTile(tileX, tileY);
-    // this.el.object3D.add(mesh);
     this.el.setObject3D("mesh0", mesh);
-    
-    console.log(mesh.position.x);
-    console.log(mesh.position.y);
-    console.log(mesh.position.z);
     
     var mesh1 = drawTile(tileX+1, tileY);
     mesh1.position.x = 4;
@@ -78,7 +66,20 @@ AFRAME.registerComponent('mapbox-terrain', {
     mesh5.position.x = -4;
     this.el.setObject3D("mesh5", mesh5);
     
-    console.log(this.el.object3DMap);  
+    var mesh6 = drawTile(tileX-1, tileY+1);
+    mesh6.position.z = 4;
+    mesh6.position.x = -4;
+    this.el.setObject3D("mesh6", mesh6);
+    
+    var mesh7 = drawTile(tileX, tileY+1);
+    mesh7.position.z = 4;
+    this.el.setObject3D("mesh7", mesh7);
+    
+    var mesh8 = drawTile(tileX+1, tileY+1);
+    mesh8.position.z = 4;
+    mesh8.position.x = 4;
+    this.el.setObject3D("mesh8", mesh8);
+
     
     function drawTile(tileX, tileY) {
       console.log('draw tile');

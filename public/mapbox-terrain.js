@@ -40,31 +40,58 @@ AFRAME.registerComponent('mapbox-terrain', {
 		var type = this.data.type;
 		var tileX = long2tile(mapLongitude, mapZoomLevel);
 		var tileY = lat2tile(mapLatitude, mapZoomLevel);
+    
+    console.log('tileX');
+    console.log(tileX);
+    console.log('tileY');
+    console.log(tileY);
+    
+    
+    
+    var mesh = drawTile(tileX, tileY);
+    // this.el.object3D.add(mesh);
+    this.el.setObject3D("mesh0", mesh);
+    
+    console.log(mesh.position.x);
+    console.log(mesh.position.y);
+    console.log(mesh.position.z);
+    
+    var mesh1 = drawTile(tileX+1, tileY+1);
+    mesh1.position.y = 1;
+    this.el.setObject3D("mesh1", mesh1);
+    
+    var mesh2 = drawTile(tileX-1, tileY-1);
+    mesh2.position.y = -1;
+    this.el.setObject3D("mesh2", mesh2);
+    
+    console.log(this.el.object3DMap);  
+    
+    function drawTile(tileX, tileY) {
+      console.log('draw tile');
+      var texture = buildTerrainTexture(tileX, tileY);
+      var geometry	= buildElevationPlaneGeometry(tileX, tileY);
+      var material	= new THREE.MeshPhongMaterial({
+        map: texture,
+        // wireframe: true
+      }); 
+      var mesh	= new THREE.Mesh( geometry, material );
+      mesh.rotation.x = -Math.PI/2;
+      mesh.receiveShadow = true;
+      mesh.castShadow = true;
 
-	
-		var texture = buildTerrainTexture();
-
-		// var geometry	= new THREE.PlaneGeometry(1,1);
-		var geometry	= buildElevationPlaneGeometry();
-		var material	= new THREE.MeshPhongMaterial({
-			map: texture,
-			// wireframe: true
-		}); 
-
-		var mesh	= new THREE.Mesh( geometry, material );
-		mesh.rotation.x = -Math.PI/2;
-		mesh.receiveShadow = true;
-		mesh.castShadow = true;
- 
-		mesh.scale.multiplyScalar(4);
-		this.el.object3D.add(mesh);
-		
+      mesh.scale.multiplyScalar(4);
+      return mesh;
+    }
+    
 		// http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#ECMAScript_.28JavaScript.2FActionScript.2C_etc..29
 		function long2tile(lon,zoom) { return (Math.floor((lon+180)/360*Math.pow(2,zoom))); }
  	 	function lat2tile(lat,zoom)  { return (Math.floor((1-Math.log(Math.tan(lat*Math.PI/180) + 1/Math.cos(lat*Math.PI/180))/Math.PI)/2 *Math.pow(2,zoom))); }
- 
-		function buildElevationPlaneGeometry(){
+    
+		function buildElevationPlaneGeometry(tileX, tileY){
 			// https://blog.mapbox.com/global-elevation-data-6689f1d0ba65
+      console.log('build elevation plane');
+      console.log(`${mapZoomLevel}/${tileX}/${tileY}`);
+
 			var restURL = `https://api.mapbox.com/v4/mapbox.terrain-rgb/${mapZoomLevel}/${tileX}/${tileY}@2x.pngraw?access_token=${access_token}`
 			// debugger
 			var geometry	= new THREE.PlaneBufferGeometry( 1, 1, 512-1, 512-1 );
@@ -93,11 +120,14 @@ AFRAME.registerComponent('mapbox-terrain', {
 				}
 				geometry.attributes.position.needsUpdate = true
 				geometry.computeVertexNormals()
+        return geometry;
 			})
 
 			return geometry
 		}
-		function buildTerrainTexture(){
+		function buildTerrainTexture(tileX, tileY){
+      console.log('build terrain texture');
+      console.log(`${type}/${mapZoomLevel}/${tileX}/${tileY}`);
 			var restURL = `https://api.mapbox.com/v4/mapbox.${type}/${mapZoomLevel}/${tileX}/${tileY}@2x.png?access_token=${access_token}`
 			// var restURL = `https://api.mapbox.com/v4/mapbox.satellite/${mapZoomLevel}/${tileX}/${tileY}@2x.png?access_token=${access_token}`
 

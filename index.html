@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TerraformAR</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/semantic.min.css">
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    
+    <!-- import the webpage's javascript file -->
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <script src="/semantic.min.js" defer></script>
+    
+    <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.min.js"></script>
+    <script>THREEx.ArToolkitContext.baseURL = 'https://jeromeetienne.github.io/AR.js/three.js/'</script>
+    
+    <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script> 
+    
+  </head>  
+  <body>
+    <a-scene embedded artoolkit='sourceType: webcam;'>
+      <a-camera id="camera">
+        <a-sphere position="0 -1 -3" radius="0.5" color="#3291DC"></a-sphere>
+      </a-camera>
+      <a-sphere position="0 0 -4.5" rotation="0 -45 0" radius="2" color="#3291DC">
+        <a-entity 
+        text-geometry="value: TerraformAR"
+        material="color: #66E1B4"
+        position="-1.2 2.25 0"
+        rotation="0 0 0"
+        scale="0.5 0.5 0.5"
+        ></a-entity>
+        <a-entity 
+        text-geometry="value: Visualize ecological data on the browser"
+        material="color: #66E1B4"
+        position="-1.2 2.1 0"
+        rotation="0 0 0"
+        scale="0.2 0.2 0.2"
+        ></a-entity>
+      </a-sphere> 
+    </a-scene>
+    
+    <div class="ui vertical buttons">
+      <a class="massive circular ui icon button" href="https://realityvirtually2019.github.io/TerraformAR/ar.html/">
+        <i class="icon globe"></i>
+      </a>
+      <a class="massive circular ui icon button" href="https://geometric.datavized.com/view/-LWcD3RvMztkSx5stuMh">
+        <i class="icon chart bar"></i>
+      </a>
+      <button class="massive circular ui icon button" href="https://realityvirtually2019.github.io/TerraformAR/vr.html">
+        <i class="icon eye"></i>
+      </button>
+    </div>
+  </body>
+</html>

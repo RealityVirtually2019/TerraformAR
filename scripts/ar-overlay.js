@@ -5,7 +5,7 @@ window.onload = function(){
 	camera.addEventListener('componentchanged', function (evt) {
 			switch(evt.detail.name){
 			case 'rotation':
-				// console.log('camera rotation changed', evt.detail);
+				//console.log('camera rotation changed', evt.detail.newData);
 				var compassRotation = camera.components['compass-rotation'];
 				var lookControls = camera.components['look-controls'];
 				document.querySelector('#camera_angle').innerText = evt.detail.y;

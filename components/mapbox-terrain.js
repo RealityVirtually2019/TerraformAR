@@ -2,10 +2,10 @@ if (typeof AFRAME === 'undefined') {
     throw new Error('Component attempted to register before AFRAME was available.');
   }
   else {
-    console.log("Registering map-terrain...");
+    console.log("Registering mapbox-terrain...");
 }
 
-AFRAME.registerComponent('map-terrain', {
+AFRAME.registerComponent('mapbox-terrain', {
 	schema: {
 		latitude: {
 			type: 'number',
@@ -26,7 +26,11 @@ AFRAME.registerComponent('map-terrain', {
 		tiles: {
 			type: 'number',
 			default: 25,
-		}
+		},
+    layers: { // layers
+      type: 'number',
+      default: 2 
+    }
 	},
 	init: function () {
 		// https://www.mapbox.com/studio/account/tokens/
@@ -39,49 +43,48 @@ AFRAME.registerComponent('map-terrain', {
 		var tileX = long2tile(mapLongitude, mapZoomLevel);
 		var tileY = lat2tile(mapLatitude, mapZoomLevel);
     
-    var meshOffset = 4;
-    
     var mesh = drawTile(tileX, tileY);
     this.el.setObject3D("mesh0", mesh);
     
     var mesh1 = drawTile(tileX+1, tileY);
-    mesh1.position.x = meshOffset;
+    mesh1.position.x = 4;
     this.el.setObject3D("mesh1", mesh1);
     
     var mesh2 = drawTile(tileX+1, tileY-1);
-    mesh2.position.x = meshOffset;
-    mesh2.position.z = -meshOffset;
+    mesh2.position.x = 4;
+    mesh2.position.z = -4;
     this.el.setObject3D("mesh2", mesh2);
     
     var mesh3 = drawTile(tileX, tileY-1);
-    mesh3.position.z = -meshOffset;
+    mesh3.position.z = -4;
     this.el.setObject3D("mesh3", mesh3);
     
     var mesh4 = drawTile(tileX-1, tileY-1);
-    mesh4.position.z = -meshOffset;
-    mesh4.position.x = -meshOffset;
+    mesh4.position.z = -4;
+    mesh4.position.x = -4;
     this.el.setObject3D("mesh4", mesh4);
     
     var mesh5 = drawTile(tileX-1, tileY);
-    mesh5.position.x = -meshOffset;
+    mesh5.position.x = -4;
     this.el.setObject3D("mesh5", mesh5);
     
     var mesh6 = drawTile(tileX-1, tileY+1);
-    mesh6.position.z = meshOffset;
-    mesh6.position.x = -meshOffset;
+    mesh6.position.z = 4;
+    mesh6.position.x = -4;
     this.el.setObject3D("mesh6", mesh6);
     
     var mesh7 = drawTile(tileX, tileY+1);
-    mesh7.position.z = meshOffset;
+    mesh7.position.z = 4;
     this.el.setObject3D("mesh7", mesh7);
     
     var mesh8 = drawTile(tileX+1, tileY+1);
-    mesh8.position.z = meshOffset;
-    mesh8.position.x = meshOffset;
+    mesh8.position.z = 4;
+    mesh8.position.x = 4;
     this.el.setObject3D("mesh8", mesh8);
 
     
     function drawTile(tileX, tileY) {
+      console.log('draw tile');
       var texture = buildTerrainTexture(tileX, tileY);
       var geometry	= buildElevationPlaneGeometry(tileX, tileY);
       var material	= new THREE.MeshPhongMaterial({
@@ -103,6 +106,8 @@ AFRAME.registerComponent('map-terrain', {
     
 		function buildElevationPlaneGeometry(tileX, tileY){
 			// https://blog.mapbox.com/global-elevation-data-6689f1d0ba65
+      console.log('build elevation plane');
+      console.log(`${mapZoomLevel}/${tileX}/${tileY}`);
 
 			var restURL = `https://api.mapbox.com/v4/mapbox.terrain-rgb/${mapZoomLevel}/${tileX}/${tileY}@2x.pngraw?access_token=${access_token}`
 			// debugger
@@ -138,6 +143,8 @@ AFRAME.registerComponent('map-terrain', {
 			return geometry
 		}
 		function buildTerrainTexture(tileX, tileY){
+      console.log('build terrain texture');
+      console.log(`${type}/${mapZoomLevel}/${tileX}/${tileY}`);
 			var restURL = `https://api.mapbox.com/v4/mapbox.${type}/${mapZoomLevel}/${tileX}/${tileY}@2x.png?access_token=${access_token}`
 
 			var texture = new THREE.Texture()
@@ -175,15 +182,13 @@ AFRAME.registerComponent('map-terrain', {
 })
 
 
-AFRAME.registerPrimitive('a-map-terrain', AFRAME.utils.extendDeep({}, AFRAME.primitives.getMeshMixin(), {
+AFRAME.registerPrimitive('a-mapbox-terrain', AFRAME.utils.extendDeep({}, AFRAME.primitives.getMeshMixin(), {
 	defaultComponents: {
-		'map-terrain': {},
+		'mapbox-terrain': {},
 	},
 	mappings: {
-		'latitude': 'map-terrain.latitude',
-		'longitude': 'map-terrain.longitude',
-		'zoom-level': 'map-terrain.zoom-level',
-		'type': 'map-terrain.type',
-		'tiles': 'map-terrain.tiles',
+		'latitude': 'mapbox-terrain.latitude',
+		'longitude': 'mapbox-terrain.longitude',
+		'zoom-level': 'mapbox-terrain.zoom-level',
 	}
 }))

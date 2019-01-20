@@ -1,0 +1,22 @@
+/* CSS files add styling rules to your content */
+
+body {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+}
+
+.buttons {
+  position: absolute;
+  top: 30px;
+  left: 25px;
+  z-index: 8;
+}
+
+.buttons .button.circular {
+  border-radius: 100% !important;
+  margin-bottom: 25px !important;
+}
+
+#arjsDebugUIContainer {
+  display: none;
+}

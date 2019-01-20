@@ -1,72 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>TerraformAR</title>
-    <meta charset="utf-8">
-    
-    <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" type="text/css" href="./semantic.min.css">
-    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
-    <link rel="stylesheet" type="text/css" href="./style.css">
-    
-    <script src="./semantic.min.js" defer></script>
-    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"> </script>
-    
-    <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script> 
-    
-  </head>  
-  <body>
-    <a-scene embedded arjs='sourceType: webcam; sourceType: webcam; debugUIEnabled: false' vr-mode-ui='enabled: false'>
 
-      <a-assets class="aframe-assets">
-        <img id="earth" src="./Albedo.jpg">
-      </a-assets>
+<head>
+  <title>TerraformAR</title>
+  <meta charset="utf-8">
 
-      <a-camera id="camera">
-      </a-camera>
-      <!-- Earth -->
-      <a-sphere id="Earth" class="boundry"
-                position="0 0 -5" 
-                radius="1.5" 
-                material="src:#earth; roughness: 1; transparent: true; opacity: 0.9;">
+  <!-- import the webpage's stylesheet -->
+  <link rel="stylesheet" type="text/css" href="./semantic.min.css">
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
+  <link rel="stylesheet" type="text/css" href="./style.css">
 
-                <a-entity 
-                text-geometry="value: TerraformAR"
-                material="color: #EEEEEEE"
-                position="-1.2 2.25 0"
-                rotation="0 0 0"
-                scale="0.5 0.5 0.5"
-                ></a-entity>
-                <a-entity 
-                text-geometry="value: Visualize ecological data on the browser"
-                material="color: #EEEEEE"
-                position="-1.2 2.1 0"
-                rotation="0 0 0"
-                scale="0.2 0.2 0.2"
-                ></a-entity>
+  <script src="./semantic.min.js" defer></script>
+  <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"> </script>
 
-          <a-animation attribute="rotation"
-                 easing="linear" 
-                 dur="150000"
-                 fill="forwards"
-                 to="0 360 0"
-                 repeat="indefinite"></a-animation>
-      </a-sphere>
-       
-      </a-sphere> 
-    </a-scene>
-    
-    <div class="ui vertical buttons">
-      <a class="massive circular ui icon button" href="https://realityvirtually2019.github.io/TerraformAR/ar.html/">
-        <i class="icon globe"></i>
-      </a>
-      <a class="massive circular ui icon button" href="https://geometric.datavized.com/view/-LWcD3RvMztkSx5stuMh">
-        <i class="icon chart bar"></i>
-      </a>
-      <button class="massive circular ui icon button" href="https://realityvirtually2019.github.io/TerraformAR/vr.html">
-        <i class="icon eye"></i>
-      </button>
-    </div>
-  </body>
+  <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script>
+
+</head>
+
+<body>
+  <a-scene embedded arjs='sourceType: webcam; sourceType: webcam; debugUIEnabled: false' vr-mode-ui='enabled: false'>
+
+    <a-assets class="aframe-assets">
+      <img id="earth" src="./Albedo.jpg">
+    </a-assets>
+
+    <a-camera id="camera">
+    </a-camera>
+    <!-- Earth -->
+    <a-sphere id="Earth" class="boundry" position="0 0 -5" radius="1.5" material="src:#earth; roughness: 1; transparent: true; opacity: 0.9;">
+
+      <a-entity text-geometry="value: TerraformAR" material="color: #EEEEEEE" position="-1.2 2.25 0" rotation="0 0 0"
+        scale="0.5 0.5 0.5"></a-entity>
+      <a-entity text-geometry="value: Visualize ecological data on the browser" material="color: #EEEEEE" position="-1.2 2.1 0"
+        rotation="0 0 0" scale="0.2 0.2 0.2"></a-entity>
+
+      <a-animation attribute="rotation" easing="linear" dur="150000" fill="forwards" to="0 360 0" repeat="indefinite"></a-animation>
+    </a-sphere>
+
+    </a-sphere>
+  </a-scene>
+
+  <div class="ui vertical buttons">
+    <a class="massive circular ui icon button" href="https://realityvirtually2019.github.io/TerraformAR/ar">
+      <i class="icon globe"></i>
+    </a>
+    <a class="massive circular ui icon button" href="https://geometric.datavized.com/view/-LWcD3RvMztkSx5stuMh">
+      <i class="icon chart bar"></i>
+    </a>
+    <button class="massive circular ui icon button" href="https://realityvirtually2019.github.io/TerraformAR/vr">
+      <i class="icon eye"></i>
+    </button>
+  </div>
+</body>
+
 </html>

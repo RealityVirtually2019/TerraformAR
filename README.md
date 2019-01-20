@@ -14,7 +14,7 @@ TerraformAR lets you experience this disastrous future we are headed towards and
 TerraformAR gives form to hidden layers of our ecology as an AR overlay. See the state of the environment around you; including air quality, annual climate change, pollution, land development, water quality, and health of flora and fauna.
 
 ## How we built it
-There are two parts to TerraformAR, the first is a 60 second WebVR intro experience that shows future downtown NYC. This VR experience was built in Unity and exported to the web. Kat used a mixture of her own modeling and premade assets to build and animate this scene. The second part of TerraformAR is a WebAR overlay powered by custom JavaScript code on top of AFrame and Three.js. This custom code is designed to create an WebAR overlay compatible with any smartphone made in the last 5 years. (I.E. not needing WebXR support to display AR in the browser.
+There are two parts to TerraformAR, the first is a 60 second WebVR intro experience that shows future downtown NYC. This VR experience was built in Unity and exported to the web. Kat used a mixture of her own modeling and premade assets to build and animate this scene. The second part of TerraformAR is a WebAR overlay powered by custom JavaScript code on top of AFrame and Three.js. This custom code is designed to create an WebAR overlay compatible with any smartphone made in the last 5 years. (I.E. not needing WebXR support to display AR in a mobile browser).
 
 ## Challenges we ran into
 To make an easy to use AR overlay available to everyone, we had to make a new type of WebAR framework. This took some serious experimenting to get right. 

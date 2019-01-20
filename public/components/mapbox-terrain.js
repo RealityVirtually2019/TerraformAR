@@ -1,12 +1,8 @@
-
-var CONFIG = {};
-CONFIG.DEBUG = true;
-
 if (typeof AFRAME === 'undefined') {
     throw new Error('Component attempted to register before AFRAME was available.');
   }
   else {
-    if (CONFIG.DEBUG) {console.log("Registering mapbox-terrain...");}
+    console.log("Registering mapbox-terrain...");
 }
 
 AFRAME.registerComponent('mapbox-terrain', {
@@ -31,6 +27,10 @@ AFRAME.registerComponent('mapbox-terrain', {
 			type: 'number',
 			default: 25,
 		},
+    layers: { // layers
+      type: 'number',
+      default: 2 
+    }
 	},
 	init: function () {
 		// https://www.mapbox.com/studio/account/tokens/

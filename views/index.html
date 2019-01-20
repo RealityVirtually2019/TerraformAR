@@ -1,23 +1,24 @@
 <html>
+
 <head>
-<script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
-<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"> </script>
+	<script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+	<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"> </script>
 
-<script src="/components/mapbox-terrain.js"></script>
-<script src="/components/gps-position.js"></script>
-<script src="/components/compass-rotation.js"></script>
-<script src="/components/gps-place.js"></script>
+	<script src="/components/mapbox-terrain.js"></script>
+	<script src="/components/gps-position.js"></script>
+	<script src="/components/compass-rotation.js"></script>
+	<script src="/components/gps-place.js"></script>
 
-<script src="/scripts/ar-overlay.js"></script>
-  
+	<script src="/scripts/ar-overlay.js"></script>
+
 </head>
-  
+
 <body style="margin: 0px; overflow: hidden;">
-	
+
 	<div style="position: fixed; top: 10px; width:100%; text-align: center; z-index: 1; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
 		<div>
 			coords: <span id="crd_longitude"></span>, <span id="crd_latitude"></span>
-				(zero coords: <span id="zero_crd_longitude"></span>, <span id="zero_crd_latitude"></span>)
+			(zero coords: <span id="zero_crd_longitude"></span>, <span id="zero_crd_latitude"></span>)
 		</div>
 		<div>
 			camera coords: <span id="camera_p_x"></span>, <span id="camera_p_z"></span>
@@ -28,16 +29,17 @@
 			yaw angle: <span id="yaw_angle"></span>
 		</div>
 	</div>
-	
+
 	<a-scene embedded artoolkit="sourceType: webcam;">
-		
-<!-- 		<a-camera id="camera" user-height="1.6" gps-position compass-rotation></a-camera> -->
-    <a-camera id="camera"></a-camera>
-		
-    <!--  MIT Media Lab (42.356360, -71.097910)    -->
-    <a-mapbox-terrain position="0 0.3 -0.4" zoom-level="5" latitude="42.356360" longitude="-71.097910"></a-mapbox-terrain>
-    
+
+		<!-- 		<a-camera id="camera" user-height="1.6" gps-position compass-rotation></a-camera> -->
+		<a-camera id="camera" gps-position compass-rotation ></a-camera>
+
+		<!--  MIT Media Lab (42.356360, -71.097910)    -->
+		<a-mapbox-terrain position="0 0.3 -0.4" zoom-level="7" latitude="42.356360" longitude="-71.097910"></a-mapbox-terrain>
+
 	</a-scene>
-  
+
 </body>
+
 </html>

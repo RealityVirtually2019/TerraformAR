@@ -1,5 +1,6 @@
 # TerraformAR
 
+Open on a mobile device (Needs GPS, Compass, and Gyro to work):
 https://realityvirtually2019.github.io/TerraformAR/
 
 ## Inspiration

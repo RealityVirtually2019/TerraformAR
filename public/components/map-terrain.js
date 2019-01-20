@@ -44,41 +44,41 @@ AFRAME.registerComponent('map-terrain', {
     var mesh = drawTile(tileX, tileY);
     this.el.setObject3D("mesh0", mesh);
     
-//     var mesh1 = drawTile(tileX+1, tileY);
-//     mesh1.position.x = meshOffset;
-//     this.el.setObject3D("mesh1", mesh1);
+    var mesh1 = drawTile(tileX+1, tileY);
+    mesh1.position.x = meshOffset;
+    this.el.setObject3D("mesh1", mesh1);
     
-//     var mesh2 = drawTile(tileX+1, tileY-1);
-//     mesh2.position.x = meshOffset;
-//     mesh2.position.z = -meshOffset;
-//     this.el.setObject3D("mesh2", mesh2);
+    var mesh2 = drawTile(tileX+1, tileY-1);
+    mesh2.position.x = meshOffset;
+    mesh2.position.z = -meshOffset;
+    this.el.setObject3D("mesh2", mesh2);
     
-//     var mesh3 = drawTile(tileX, tileY-1);
-//     mesh3.position.z = -meshOffset;
-//     this.el.setObject3D("mesh3", mesh3);
+    var mesh3 = drawTile(tileX, tileY-1);
+    mesh3.position.z = -meshOffset;
+    this.el.setObject3D("mesh3", mesh3);
     
-//     var mesh4 = drawTile(tileX-1, tileY-1);
-//     mesh4.position.z = -meshOffset;
-//     mesh4.position.x = -meshOffset;
-//     this.el.setObject3D("mesh4", mesh4);
+    var mesh4 = drawTile(tileX-1, tileY-1);
+    mesh4.position.z = -meshOffset;
+    mesh4.position.x = -meshOffset;
+    this.el.setObject3D("mesh4", mesh4);
     
-//     var mesh5 = drawTile(tileX-1, tileY);
-//     mesh5.position.x = -meshOffset;
-//     this.el.setObject3D("mesh5", mesh5);
+    var mesh5 = drawTile(tileX-1, tileY);
+    mesh5.position.x = -meshOffset;
+    this.el.setObject3D("mesh5", mesh5);
     
-//     var mesh6 = drawTile(tileX-1, tileY+1);
-//     mesh6.position.z = meshOffset;
-//     mesh6.position.x = -meshOffset;
-//     this.el.setObject3D("mesh6", mesh6);
+    var mesh6 = drawTile(tileX-1, tileY+1);
+    mesh6.position.z = meshOffset;
+    mesh6.position.x = -meshOffset;
+    this.el.setObject3D("mesh6", mesh6);
     
-//     var mesh7 = drawTile(tileX, tileY+1);
-//     mesh7.position.z = meshOffset;
-//     this.el.setObject3D("mesh7", mesh7);
+    var mesh7 = drawTile(tileX, tileY+1);
+    mesh7.position.z = meshOffset;
+    this.el.setObject3D("mesh7", mesh7);
     
-//     var mesh8 = drawTile(tileX+1, tileY+1);
-//     mesh8.position.z = meshOffset;
-//     mesh8.position.x = meshOffset;
-//     this.el.setObject3D("mesh8", mesh8);
+    var mesh8 = drawTile(tileX+1, tileY+1);
+    mesh8.position.z = meshOffset;
+    mesh8.position.x = meshOffset;
+    this.el.setObject3D("mesh8", mesh8);
 
     
     function drawTile(tileX, tileY) {

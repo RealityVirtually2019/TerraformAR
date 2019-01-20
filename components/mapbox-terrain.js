@@ -1,6 +1,4 @@
-//////////////////////////////////////////////////////////////////////////////
-//		arjs-hit-testing
-//////////////////////////////////////////////////////////////////////////////
+
 var CONFIG = {};
 CONFIG.DEBUG = true;
 
@@ -31,7 +29,7 @@ AFRAME.registerComponent('mapbox-terrain', {
 		},
 		tiles: {
 			type: 'number',
-			default: 3,
+			default: 25,
 		},
 	},
 	init: function () {
@@ -148,7 +146,6 @@ AFRAME.registerComponent('mapbox-terrain', {
       console.log('build terrain texture');
       console.log(`${type}/${mapZoomLevel}/${tileX}/${tileY}`);
 			var restURL = `https://api.mapbox.com/v4/mapbox.${type}/${mapZoomLevel}/${tileX}/${tileY}@2x.png?access_token=${access_token}`
-			// var restURL = `https://api.mapbox.com/v4/mapbox.satellite/${mapZoomLevel}/${tileX}/${tileY}@2x.png?access_token=${access_token}`
 
 			var texture = new THREE.Texture()
 			loadImage(restURL, function(image){

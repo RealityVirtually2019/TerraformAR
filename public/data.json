@@ -1,0 +1,51 @@
+{
+  "AirQuality": [
+    {
+      "lat": 42.356360,
+      "lng": -71.097910,
+      "value": 5
+    }
+  ],
+  "climateChange": [
+    {
+      "lat": 42.356360,
+      "lng": -71.097910,
+      "value": 5
+    }
+  ],
+  "LandDevelopment": [
+    {
+      "lat": 42.356360,
+      "lng": -71.097910,
+      "value": 5
+    }
+  ],
+  "WaterQuality": [
+    {
+      "lat": 42.356360,
+      "lng": -71.097910,
+      "value": 5
+    }
+  ],
+  "Flora": [
+    {
+      "lat": 42.356360,
+      "lng": -71.097910,
+      "value": 5
+    }
+  ],
+  "Fauna": [
+    {
+      "lat": 42.356360,
+      "lng": -71.097910,
+      "value": 5
+    }
+  ],
+  "Pollution": [
+    {
+      "lat": 42.356360,
+      "lng": -71.097910,
+      "value": 5
+    }
+  ]
+}

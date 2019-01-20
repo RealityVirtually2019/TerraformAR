@@ -183,5 +183,7 @@ AFRAME.registerPrimitive('a-mapbox-terrain', AFRAME.utils.extendDeep({}, AFRAME.
 		'latitude': 'mapbox-terrain.latitude',
 		'longitude': 'mapbox-terrain.longitude',
 		'zoom-level': 'mapbox-terrain.zoom-level',
+		'zoom-level': 'mapbox-terrain.type',
+		'zoom-level': 'mapbox-terrain.tiles',
 	}
 }))

@@ -29,6 +29,10 @@ AFRAME.registerComponent('mapbox-terrain', {
 			type: 'string',
 			default: 'satellite',
 		},
+		tiles: {
+			type: 'number',
+			default: 3,
+		},
 	},
 	init: function () {
 		// https://www.mapbox.com/studio/account/tokens/

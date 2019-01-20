@@ -2,20 +2,20 @@
 
 <head>
 	<script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
-	<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"> </script>
 
-	<script src="/components/mapbox-terrain.js"></script>
-	<script src="/components/gps-position.js"></script>
-	<script src="/components/compass-rotation.js"></script>
-	<script src="/components/gps-place.js"></script>
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"> </script>
 
-	<script src="/scripts/ar-overlay.js"></script>
+  <script src="/components/map-terrain.js"></script>
+<!-- 	<script src="/components/compass-rotation.js"></script> -->
+<!--   <script src="/components/gps-position.js"></script> -->
 
+<!-- 	<script src="/scripts/ar-overlay.js"></script> -->
+<!--  <script src="/data.json"></script> -->
 </head>
 
 <body style="margin: 0px; overflow: hidden;">
 
-	<div style="position: fixed; top: 10px; width:100%; text-align: center; z-index: 1; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
+<!-- 	<div style="position: fixed; top: 10px; width:100%; text-align: center; z-index: 1; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
 		<div>
 			coords: <span id="crd_longitude"></span>, <span id="crd_latitude"></span>
 			(zero coords: <span id="zero_crd_longitude"></span>, <span id="zero_crd_latitude"></span>)
@@ -28,17 +28,45 @@
 			camera angle: <span id="camera_angle"></span>,
 			yaw angle: <span id="yaw_angle"></span>
 		</div>
-	</div>
+	</div> -->
 
-	<a-scene embedded artoolkit="sourceType: webcam;">
+<!--    -->
+<!-- <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false" vr-mode-ui="enabled: false" >
 
-		<!-- 		<a-camera id="camera" user-height="1.6" gps-position compass-rotation></a-camera> -->
-		<a-camera id="camera" gps-position compass-rotation ></a-camera>
+		<a-camera id="camera" user-height="1.6" ></a-camera>
 
-		<!--  MIT Media Lab (42.356360, -71.097910)    -->
-		<a-mapbox-terrain position="0 0.3 -0.4" zoom-level="7" latitude="42.356360" longitude="-71.097910"></a-mapbox-terrain>
+		<a-map-terrain position="0 0.3 -1.5" zoom-level="11" latitude="42.356360" longitude="-71.097910" ></a-map-terrain>
 
-	</a-scene>
+	</a-scene> -->
+  
+  <script>
+ window.addEventListener("load", function(event) {
+
+   console.log("window loaded");
+       console.log("version 04");
+
+      var scene = document.createElement('a-scene');
+       scene.setAttribute('embedded');
+       scene.setAttribute('arjs', 'sourceType: webcam; debugUIEnabled: false');
+       scene.setAttribute('vr-mode-ui', 'enabled: false');
+    
+       var camera = document.createElement('a-camera');
+       camera.setAttribute('id', 'camera');
+       camera.setAttribute('user-height', '1.6');
+       camera.setAttribute('look-controls');
+       scene.appendChild(camera);
+        
+      var mapTerrain = document.createElement('a-map-terrain');
+       mapTerrain.setAttribute('position', '0 0.3 -1.5');
+       mapTerrain.setAttribute('zoom-level', 11);
+       mapTerrain.setAttribute('latitude', 42.356360);
+        mapTerrain.setAttribute('longitude', -71.097910);
+        scene.appendChild(mapTerrain);
+
+        document.querySelector('body').appendChild(scene);
+      });
+    
+    </script>
 
 </body>
 

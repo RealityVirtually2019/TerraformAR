@@ -2,10 +2,10 @@ if (typeof AFRAME === 'undefined') {
     throw new Error('Component attempted to register before AFRAME was available.');
   }
   else {
-    console.log("Registering mapbox-terrain...");
+    console.log("Registering map-terrain...");
 }
 
-AFRAME.registerComponent('mapbox-terrain', {
+AFRAME.registerComponent('map-terrain', {
 	schema: {
 		latitude: {
 			type: 'number',
@@ -175,15 +175,15 @@ AFRAME.registerComponent('mapbox-terrain', {
 })
 
 
-AFRAME.registerPrimitive('a-mapbox-terrain', AFRAME.utils.extendDeep({}, AFRAME.primitives.getMeshMixin(), {
+AFRAME.registerPrimitive('a-map-terrain', AFRAME.utils.extendDeep({}, AFRAME.primitives.getMeshMixin(), {
 	defaultComponents: {
-		'mapbox-terrain': {},
+		'map-terrain': {},
 	},
 	mappings: {
-		'latitude': 'mapbox-terrain.latitude',
-		'longitude': 'mapbox-terrain.longitude',
-		'zoom-level': 'mapbox-terrain.zoom-level',
-		'zoom-level': 'mapbox-terrain.type',
-		'zoom-level': 'mapbox-terrain.tiles',
+		'latitude': 'map-terrain.latitude',
+		'longitude': 'map-terrain.longitude',
+		'zoom-level': 'map-terrain.zoom-level',
+		'zoom-level': 'map-terrain.type',
+		'zoom-level': 'map-terrain.tiles',
 	}
 }))

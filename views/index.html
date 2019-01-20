@@ -8,12 +8,13 @@
 	<script src="/components/compass-rotation.js"></script>
 
 	<script src="/scripts/ar-overlay.js"></script>
+  <script src="/data.json"></script>
 
 </head>
 
 <body style="margin: 0px; overflow: hidden;">
 
-	<div style="position: fixed; top: 10px; width:100%; text-align: center; z-index: 1; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
+<!-- 	<div style="position: fixed; top: 10px; width:100%; text-align: center; z-index: 1; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
 		<div>
 			coords: <span id="crd_longitude"></span>, <span id="crd_latitude"></span>
 			(zero coords: <span id="zero_crd_longitude"></span>, <span id="zero_crd_latitude"></span>)
@@ -26,15 +27,15 @@
 			camera angle: <span id="camera_angle"></span>,
 			yaw angle: <span id="yaw_angle"></span>
 		</div>
-	</div>
+	</div> -->
 
 	<a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false" vr-mode-ui="enabled: false" look-controls="touchEnabled: false">
 
 		<!-- 		<a-camera id="camera" user-height="1.6" gps-position compass-rotation></a-camera> -->
-		<a-camera id="camera" compass-rotation ></a-camera>
+		<a-camera id="camera" ></a-camera>
 
 		<!--  MIT Media Lab (42.356360, -71.097910)    -->
-		<a-mapbox-terrain position="0 0.3 -0.4" zoom-level="7" latitude="42.356360" longitude="-71.097910"></a-mapbox-terrain>
+		<a-map-terrain position="0 0.3 -1" zoom-level="9" latitude="42.356360" longitude="-71.097910"></a-map-terrain>
 
 	</a-scene>
 
